@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
-import { createClient } from '@supabase/supabase-js'; // Importa createClient desde supabase
+import { createClient } from '@supabase/supabase-js'; 
 
 dotenv.config();
 
@@ -14,13 +14,13 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:8081', // Permitir solicitudes desde localhost:8081
-    methods: ['GET', 'POST'] // Permitir los métodos GET y POST
+    origin: 'http://localhost:8081', 
+    methods: ['GET', 'POST'] 
   }
 });
 
 const supabase = createClient(
-  'https://trdtclxixupyonmhfpbx.supabase.co', process.env.DB_TOKEN_WEB_CHAT
+  process.env.DB_TOKEN_WEB_CHAT_URL, process.env.DB_TOKEN_WEB_CHAT
 );
 
 io.on('connection', async (socket) => {
